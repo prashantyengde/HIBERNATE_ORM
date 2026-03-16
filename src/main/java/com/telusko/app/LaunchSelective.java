@@ -6,15 +6,16 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-import com.telusko.model.Student;
+import com.telusko.model.Employee1;
 
-public class LaunchUpdate 
+
+public class LaunchSelective 
 {
 
 	public static void main(String[] args) 
 	{
 			SessionFactory sessionFactory = new Configuration().configure().
-					addAnnotatedClass(Student.class).buildSessionFactory();
+					addAnnotatedClass(Employee1.class).buildSessionFactory();
 			Session session=null;
 			Transaction transaction=null;
 			boolean flag=false;
@@ -23,13 +24,12 @@ public class LaunchUpdate
 			{
 				 session=sessionFactory.openSession();
 				 transaction=session.beginTransaction();
-				 Student st=new Student();
-				 st.setId(4);
-				 st.setSname("Harsh");
-				 st.setScity("Jaipur");
-				 
-				// session.saveOrUpdate(st);
-				 session.merge(st);
+				 Employee1 e=new Employee1();
+				 e.setEage(17);
+				 e.setEid(1);
+				 e.seteName("Rohan");
+				 e.setEcity("BLR");
+				 session.persist(e);
 				
 				 flag=true;
 				 
